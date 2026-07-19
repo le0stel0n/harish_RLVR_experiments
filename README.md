@@ -16,4 +16,4 @@ and lastly the most important one!! INSTREST and PASSION :)
  
 #
 
-the first workbook `grpo_first_experiment.ipynb` is to get a working knowldge of how a GRPO experiment works, a small LLM Qwen 2.5 0.5B - Instruct. to run and observe GSM8K
+the first workbook `grpo_first_experiment.ipynb` is to get a working knowldge of how a GRPO experiment works, a small LLM Qwen 2.5 0.5B - Instruct was used to run and observe the results of the test questions (GSM8K)
