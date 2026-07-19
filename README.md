@@ -16,4 +16,19 @@ and lastly the most important one!! INSTREST and PASSION :)
  
 #
 
-the first workbook `grpo_first_experiment.ipynb` is to get a working knowldge of how a GRPO experiment works, a small LLM Qwen 2.5 0.5B - Instruct was used to run and observe the results of the test questions (GSM8K)
+The first workbooks `grpo_first_experiment.ipynb` , `grpo_first_experiment_larger_groups_size.ipynb`
+
+**Goal:** Get hands-on with GRPO training end-to-end on a small model and a single-turn math task, using a purely verifiable (RLVR-style) reward.
+
+**Model:** Qwen/Qwen2.5-0.5B-Instruct, fine-tuned via LoRA (r=16, targeting q/k/v/o attention projections). ~0.44% of parameters trainable (2.16M / 496M).
+
+**Dataset:** GSM8K, 500-example training subset, 10-example held-out test set.
+
+
+## Overall Conclusions
+
+1. The larger group size (8 vs. 4) measurably fixed the zero-reward-variance problem predicted from the base model's 8% zero-shot accuracy on this task — confirmed directly via `reward_std` and `frac_reward_zero_std` metrics, not just inferred.
+2. The apparent "training-induced degeneration" in Run 1 was a false conclusion.The actual cause was a generation-configuration bug (stale training-mode settings applied at inference time), unrelated to training dynamics. This was only caught by cross-checking multiple independent signals — training-time completion logs vs. separate held-out generation — rather than trusting a single observation.
+3. Methodological lesson: a model producing bad output at evaluation time does not by itself confirm the training run was the cause. Always verify whether an inference-time configuration issue could produce the same symptom before attributing a failure to the training process itself.
+
+
