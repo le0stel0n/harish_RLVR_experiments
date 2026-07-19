@@ -4,7 +4,7 @@ The research question ?
 
 In a multi-step agentic tasks where only a final outcome reward is available, does adding cheap, heuristic sub-goal checkpoints to the reward signal improve training efficiency and final performance compared to outcome-only reward and at what point does it start causing the agent to optimize for the sub-goals themselves rather than genuine task success?
 
-for anyone who is readding this asking why this question and why now? I think there are three resaons:
+for anyone who is reading this asking why this question and why now? I think there are three resaons:
 
 number one:	The core problem is credit assignment under sparse reward. When an agent takes many actions before any reward signal arrives, standard policy-gradient methods (including GRPO) have to attribute that single end-of-trajectory signal back across every action that led there. With a short trajectory this is noisy but tolerable. as trajectories get longer, the signal gets diluted across more actions and training becomes both slower and less stable.
 
